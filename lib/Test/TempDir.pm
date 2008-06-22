@@ -5,7 +5,7 @@ package Test::TempDir;
 use strict;
 use warnings;
 
-our $VERSION = "0.01";
+our $VERSION = "0.02";
 
 use File::Temp ();
 
@@ -36,7 +36,7 @@ sub _template_args {
 	}
 }
 
-sub tempdir { File::Temp::tempdir( _optional_template_args(@_) ) }
+sub tempdir { File::Temp::tempdir( _template_args(@_) ) }
 
 sub tempfile { File::Temp::tempfile( _template_args(@_) ) }
 
