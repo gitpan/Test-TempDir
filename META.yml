@@ -1,12 +1,13 @@
 --- #YAML:1.0
 name:                Test-TempDir
-version:             0.02
+version:             0.03
 abstract:            ~
 license:             ~
 author:              ~
 generated_by:        ExtUtils::MakeMaker version 6.44
 distribution_type:   module
 requires:     
+    File::NFSLock:                 0
     File::Path:                    0
     File::Spec:                    0
     File::Temp:                    0
