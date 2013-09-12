@@ -1,12 +1,16 @@
-#!/usr/bin/perl
-
 package Test::TempDir::Handle;
+BEGIN {
+  $Test::TempDir::Handle::AUTHORITY = 'cpan:NUFFIN';
+}
+{
+  $Test::TempDir::Handle::VERSION = '0.06';
+}
 use Moose;
 
 use MooseX::Types::Path::Class qw(Dir);
 use Moose::Util::TypeConstraints;
 
-use namespace::clean -except => [qw(meta)];
+use namespace::autoclean;
 
 has dir => (
 	isa => Dir,
@@ -22,7 +26,7 @@ has lock => (
 );
 
 has cleanup_policy => (
-	isa => enum( __PACKAGE__ . "::CleanupPolicy", qw(success always never) ),
+	isa => enum([ qw(success always never) ]),
 	is  => "rw",
 	default => "success",
 );
@@ -135,22 +139,22 @@ This class manages a temporary directory.
 
 =over 4
 
-=item dir
+=item C<dir>
 
 The L<Path::Class::Dir> that is being managed.
 
-=item lock
+=item C<lock>
 
 An optional lock object (L<File::NFSLock>). Just kept around for reference counting.
 
-=item cleanup_policy
+=item C<cleanup_policy>
 
 One of C<success>, C<always> or C<never>.
 
 C<success> means that C<cleanup> deletes only if C<test_builder> says the tests
 have passed.
 
-=item test_builder
+=item C<test_builder>
 
 The L<Test::Builder> singleton.
 
@@ -160,15 +164,15 @@ The L<Test::Builder> singleton.
 
 =over 4
 
-=item empty
+=item C<empty>
 
 Cleans out the directory but doesn't delete it.
 
-=item delete
+=item C<delete>
 
 Cleans out the directory and removes it.
 
-=item cleanup
+=item C<cleanup>
 
 Calls C<delete> if the C<cleanup_policy> dictates to do so.
 
