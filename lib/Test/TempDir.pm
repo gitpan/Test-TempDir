@@ -3,9 +3,9 @@ BEGIN {
   $Test::TempDir::AUTHORITY = 'cpan:NUFFIN';
 }
 {
-  $Test::TempDir::VERSION = '0.06';
+  $Test::TempDir::VERSION = '0.07';
 }
-# git description: v0.05-9-g2cd5f14
+# git description: v0.06-1-gc75f15d
 
 
 use strict;

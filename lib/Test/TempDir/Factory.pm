@@ -3,7 +3,7 @@ BEGIN {
   $Test::TempDir::Factory::AUTHORITY = 'cpan:NUFFIN';
 }
 {
-  $Test::TempDir::Factory::VERSION = '0.06';
+  $Test::TempDir::Factory::VERSION = '0.07';
 }
 use Moose;
 

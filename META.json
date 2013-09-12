@@ -74,15 +74,15 @@
    "provides" : {
       "Test::TempDir" : {
          "file" : "lib/Test/TempDir.pm",
-         "version" : "0.06"
+         "version" : "0.07"
       },
       "Test::TempDir::Factory" : {
          "file" : "lib/Test/TempDir/Factory.pm",
-         "version" : "0.06"
+         "version" : "0.07"
       },
       "Test::TempDir::Handle" : {
          "file" : "lib/Test/TempDir/Handle.pm",
-         "version" : "0.06"
+         "version" : "0.07"
       }
    },
    "release_status" : "stable",
@@ -98,7 +98,7 @@
          "web" : "https://github.com/karenetheridge/Test-TempDir"
       }
    },
-   "version" : "0.06",
+   "version" : "0.07",
    "x_Dist_Zilla" : {
       "perl" : {
          "version" : "5.019003"
