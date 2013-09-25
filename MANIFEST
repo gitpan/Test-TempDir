@@ -1,10 +1,10 @@
-Build.PL
 Changes
 INSTALL
 LICENSE
 MANIFEST
 META.json
 META.yml
+Makefile.PL
 README
 dist.ini
 lib/Test/TempDir.pm
@@ -12,6 +12,7 @@ lib/Test/TempDir/Factory.pm
 lib/Test/TempDir/Handle.pm
 t/00-check-deps.t
 t/00-compile.t
+t/00-report-prereqs.t
 t/00_load.t
 t/basic.t
 t/directory_scratch.t
