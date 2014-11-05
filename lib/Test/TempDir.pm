@@ -1,15 +1,9 @@
-package Test::TempDir;
-BEGIN {
-  $Test::TempDir::AUTHORITY = 'cpan:NUFFIN';
-}
-{
-  $Test::TempDir::VERSION = '0.08';
-}
-# git description: v0.07-2-g9334cad
-
-
 use strict;
 use warnings;
+package Test::TempDir;
+# git description: v0.08-13-g8fe7eae
+$Test::TempDir::VERSION = '0.09';
+# ABSTRACT: (DEPRECATED) Temporary files support for testing
 
 use File::Temp ();
 
@@ -56,9 +50,24 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
-Test::TempDir - Temporary files support for testing.
+Test::TempDir - (DEPRECATED) Temporary files support for testing
+
+=head1 VERSION
+
+version 0.09
+
+=head1 DEPRECATION NOTICE
+
+There have been numerous issues found with this module, particularly with its
+use of locks (unreliable, may result in your entire C<$TMPDIR> being deleted)
+and MSWin32 compatibility. As well, it uses Moose, which is nowadays considered
+to be heavier than necessary.
+
+L<Test::TempDir::Tiny> was written as a replacement. Please use it instead!
 
 =head1 SYNOPSIS
 
@@ -109,15 +118,13 @@ within C<temp_root>, in order to aid in debugging of failed tests.
 
 =head1 EXPORTS
 
-=over 4
-
-=item C<temp_root>
+=head2 C<temp_root>
 
 The root of the temporary stuff.
 
-=item C<tempfile>
+=head2 C<tempfile>
 
-=item C<tempdir>
+=head2 C<tempdir>
 
 Wrappers for the L<File::Temp> functions of the same name.
 
@@ -126,30 +133,58 @@ Wrappers for the L<File::Temp> functions of the same name.
 The default options are changed to use C<temp_root> for C<DIR> and disable
 C<CLEANUP>, but these are overridable.
 
-=item C<scratch>
+=head2 C<scratch>
 
 Loads L<Directory::Scratch> and instantiates a new one, with the same default
 options as C<tempfile> and C<tempdir>.
 
-=back
-
 =head1 SEE ALSO
 
-L<File::Temp>, L<Directory::Scratch>, L<Path::Class>
+=over 4
 
-=head1 VERSION CONTROL
+=item *
 
-This module is maintained using Git. You can get the latest version from
-L<git://github.com/nothingmuch/test-tempdir.git>.
+L<File::Temp>,
+
+=item *
+
+L<Directory::Scratch>
+
+=item *
+
+L<Path::Class>
+
+=back
 
 =head1 AUTHOR
 
-Yuval Kogman E<lt>nothingmuch@woobling.orgE<gt>
+יובל קוג'מן (Yuval Kogman) <nothingmuch@woobling.org>
 
-=head1 COPYRIGHT
+=head1 COPYRIGHT AND LICENSE
 
-    Copyright (c) 2008 Yuval Kogman. All rights reserved
-    This program is free software; you can redistribute
-    it and/or modify it under the same terms as Perl itself.
+This software is copyright (c) 2006 by יובל קוג'מן (Yuval Kogman).
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=head1 CONTRIBUTORS
+
+=for stopwords Yuval Kogman Karen Etheridge Florian Ragwitz
+
+=over 4
+
+=item *
+
+Yuval Kogman <nothingmuch@woobling.org>
+
+=item *
+
+Karen Etheridge <ether@cpan.org>
+
+=item *
+
+Florian Ragwitz <rafl@debian.org>
+
+=back
 
 =cut

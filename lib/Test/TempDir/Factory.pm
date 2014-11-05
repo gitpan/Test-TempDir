@@ -1,12 +1,7 @@
 package Test::TempDir::Factory;
-BEGIN {
-  $Test::TempDir::Factory::AUTHORITY = 'cpan:NUFFIN';
-}
-{
-  $Test::TempDir::Factory::VERSION = '0.08';
-}
+# ABSTRACT: A factory for creating L<Test::TempDir::Handle> objects
+$Test::TempDir::Factory::VERSION = '0.09';
 use Moose;
-
 use Carp qw(croak carp);
 use File::Spec;
 use File::Temp;
@@ -16,7 +11,7 @@ use MooseX::Types::Path::Class qw(Dir);
 
 use Test::TempDir::Handle;
 
-use namespace::autoclean;
+use namespace::autoclean 0.08;
 
 has lock => (
     isa => "Bool",
@@ -204,10 +199,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
-Test::TempDir::Factory - A factory for creating L<Test::TempDir::Handle>
-objects.
+Test::TempDir::Factory - A factory for creating L<Test::TempDir::Handle> objects
+
+=head1 VERSION
+
+version 0.09
 
 =head1 SYNOPSIS
 
@@ -229,37 +229,35 @@ fallback logic.
 
 =head1 ATTRIBUTES
 
-=over 4
-
-=item C<lock>
+=head2 C<lock>
 
 Whether or not to enable locking.
 
 Defaults to true.
 
-=item C<lock_opts>
+=head2 C<lock_opts>
 
 A hash reference to pass to L<File::NFSLock>.
 
 Defaults to C<NONBLOCKING>
 
-=item C<lock_attempts>
+=head2 C<lock_attempts>
 
 How many times to try to create and lock a directory.
 
 Defaults to 2.
 
-=item C<dir_name>
+=head2 C<dir_name>
 
 The directory under C<t_dir> to use.
 
 Defaults to C<tmp>
 
-=item C<t_dir>
+=head2 C<t_dir>
 
 Defaults to C<t>
 
-=item C<use_subdir>
+=head2 C<use_subdir>
 
 Whether to always use a temporary subdirectory under the temporary root.
 
@@ -269,15 +267,15 @@ When disabled, C<t/tmp> will be used directly as C<temp_root>.
 
 Defaults to true.
 
-=item C<subdir_template>
+=head2 C<subdir_template>
 
 The template to pass to C<tempdir>. Defaults to C<File::Temp::TEMPXXX>.
 
-=item C<handle_class>
+=head2 C<handle_class>
 
 Defaults to L<Test::TempDir::Handle>.
 
-=item C<verbose>
+=head2 C<verbose>
 
 Whether or not to C<carp> diagnostics when falling back.
 
@@ -285,16 +283,21 @@ If you subclass this factory and add a C<logger> method a la L<MooseX::Logger>
 then this parameter is ignored and all messages will be C<warn>ed on the
 logger.
 
-=back
-
 =head1 METHODS
 
-=over 4
-
-=item C<create>
+=head2 C<create>
 
 Create a L<Test::TempDir::Handle> object with a proper C<dir> attribute.
 
-=back
+=head1 AUTHOR
+
+יובל קוג'מן (Yuval Kogman) <nothingmuch@woobling.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2006 by יובל קוג'מן (Yuval Kogman).
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut

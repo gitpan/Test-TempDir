@@ -1,16 +1,11 @@
 package Test::TempDir::Handle;
-BEGIN {
-  $Test::TempDir::Handle::AUTHORITY = 'cpan:NUFFIN';
-}
-{
-  $Test::TempDir::Handle::VERSION = '0.08';
-}
+# ABSTRACT: A handle for managing a temporary directory root
+$Test::TempDir::Handle::VERSION = '0.09';
 use Moose;
-
 use MooseX::Types::Path::Class qw(Dir);
 use Moose::Util::TypeConstraints;
 
-use namespace::autoclean;
+use namespace::autoclean 0.08;
 
 has dir => (
     isa => Dir,
@@ -115,9 +110,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
-Test::TempDir::Handle - A handle for managing a temporary directory root.
+Test::TempDir::Handle - A handle for managing a temporary directory root
+
+=head1 VERSION
+
+version 0.09
 
 =head1 SYNOPSIS
 
@@ -137,49 +138,50 @@ This class manages a temporary directory.
 
 =head1 ATTRIBUTES
 
-=over 4
-
-=item C<dir>
+=head2 C<dir>
 
 The L<Path::Class::Dir> that is being managed.
 
-=item C<lock>
+=head2 C<lock>
 
 An optional lock object (L<File::NFSLock>). Just kept around for reference counting.
 
-=item C<cleanup_policy>
+=head2 C<cleanup_policy>
 
 One of C<success>, C<always> or C<never>.
 
 C<success> means that C<cleanup> deletes only if C<test_builder> says the tests
 have passed.
 
-=item C<test_builder>
+=head2 C<test_builder>
 
 The L<Test::Builder> singleton.
 
-=back
-
 =head1 METHODS
 
-=over 4
-
-=item C<empty>
+=head2 C<empty>
 
 Cleans out the directory but doesn't delete it.
 
-=item C<delete>
+=head2 C<delete>
 
 Cleans out the directory and removes it.
 
-=item C<cleanup>
+=head2 C<cleanup>
 
 Calls C<delete> if the C<cleanup_policy> dictates to do so.
 
 This is normally called automatically at destruction.
 
-=back
+=head1 AUTHOR
+
+יובל קוג'מן (Yuval Kogman) <nothingmuch@woobling.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2006 by יובל קוג'מן (Yuval Kogman).
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut
-
-
